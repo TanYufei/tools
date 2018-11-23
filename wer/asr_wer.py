@@ -87,12 +87,12 @@ def wer(ref, hyp, debug=False):
         print("#sub " + str(numSub))
         print("#del " + str(numDel))
         print("#ins " + str(numIns))
-    #print ref
-    #print hyp
-    #print numSub, numDel , numIns,len(r),(numSub + numDel + numIns) / (float)(len(r))
+    # print ref
+    # print hyp
+    # print numSub, numDel , numIns,len(r),(numSub + numDel + numIns) / (float)(len(r))
     return numSub, numDel , numIns,len(r)
     return (numSub + numDel + numIns) / (float)(len(r))
-    wer_result = round((numSub + numDel + numIns) / (float)(len(r)), 3)
+    # wer_result = round((numSub + numDel + numIns) / (float)(len(r)), 3)
 
 
     # return {'WER': wer_result, 'Cor': numCor, 'Sub': numSub, 'Ins': numIns, 'Del': numDel}
@@ -100,43 +100,43 @@ def wer(ref, hyp, debug=False):
 
 if __name__=='__main__':
 
-    l = []
-    f1 = open('../test/title_word', 'r')
-    lines1 = f1.readlines()
-    for line1 in lines1:
-        line1 = line1.strip()
-        words1 = re.split('	', line1)
-        title1 = words1[0]
-        # str1 = unicode(words1[1])
-        str1 = words1[1].decode('utf8')
+    # l = []
+    # f1 = open('../test/title_word', 'r')
+    # lines1 = f1.readlines()
+    # for line1 in lines1:
+    #     line1 = line1.strip()
+    #     words1 = re.split('	', line1)
+    #     title1 = words1[0]
+    #     # str1 = unicode(words1[1])
+    #     str1 = words1[1].decode('utf8')
+    #
+    #     f2 = open('../test/yzs_cafe', 'r')
+    #     lines2 = f2.readlines()
+    #     for line2 in lines2:
+    #         line2 = line2.strip()
+    #         # words2 = re.split('_', line2)
+    #         words2 = re.split('_', line2)
+    #         title2 = words2[0] + '_' + words2[1]
+    #         # title2 = words2[0]
+    #         # str2 = unicode(words2[2])
+    #         str2 = words2[2].decode('utf8')
+    #         # str2 = words2[1].decode('utf8')
+    #
+    #         if cmp(title1,title2) == 0:
+    #             # print str1 + '\n' +str2 + '\n'
 
-        f2 = open('../test/yzs_cafe', 'r')
-        lines2 = f2.readlines()
-        for line2 in lines2:
-            line2 = line2.strip()
-            # words2 = re.split('_', line2)
-            words2 = re.split('_', line2)
-            title2 = words2[0] + '_' + words2[1]
-            # title2 = words2[0]
-            # str2 = unicode(words2[2])
-            str2 = words2[2].decode('utf8')
-            # str2 = words2[1].decode('utf8')
+    str1 = u'今天天气真好阿'
+    str2 = u'今天气的好哈啊'
 
-            if cmp(title1,title2) == 0:
-                # print str1 + '\n' +str2 + '\n'
+    s1= u' '.join([char for char in str1])
+    s2= u' '.join([char for char in str2])
+    ret = wer(s1,s2, debug=True)
 
-    # str1 = u'今天天气真好阿'
-    # str2 = u'今天气真的好哈'
+    # l.append(ret)
 
-                s1= u' '.join([char for char in str1])
-                s2= u' '.join([char for char in str2])
-                ret = wer(s1,s2)
-
-                l.append(ret)
-
-    s= reduce(lambda x,y:x+y,l)
-
-    print (1-s/len(l))
+    # s= reduce(lambda x,y:x+y,l)
+    #
+    # print (1-s/len(l))
 
 
 
